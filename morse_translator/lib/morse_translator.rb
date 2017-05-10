@@ -3,9 +3,13 @@ require "pry"
 class MorseTranslator
 
   def translate(input_message)
-    input_message.downcase.chars.map do |letter|
+    clean_message(input_message).map do |letter|
       morse_dictionary[letter]
     end.join
+  end
+
+  def clean_message(input_message)
+    input_message.downcase.chars
   end
 
   def morse_dictionary
