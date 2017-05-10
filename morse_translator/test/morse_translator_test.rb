@@ -1,6 +1,7 @@
 require "minitest/autorun"
 require "minitest/pride"
 require './lib/morse_translator'
+require "benchmark"
 
 class MorseTranslatorTest < Minitest::Test
 
@@ -39,5 +40,5 @@ class MorseTranslatorTest < Minitest::Test
 
     assert_equal "", translator.translate("&^%")
   end
-
+  
 end

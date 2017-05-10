@@ -1,5 +1,3 @@
-require "pry"
-
 class MorseTranslator
 
   def translate(input_message)
