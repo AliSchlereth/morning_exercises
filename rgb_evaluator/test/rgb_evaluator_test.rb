@@ -32,5 +32,19 @@ class RGBEvaluatorTest < Minitest::Test
     assert_equal "Blue", rgb
   end
 
+  def test_returns_string_of_blue_for_a_greenish_hue
+    evaluator = RGBEvaluator.new
+    rgb = evaluator.strongest_hue("#CCFFCC")
+
+    assert_equal "Green", rgb
+  end
+
+  def test_returns_string_of_blue_for_a_different_greenish_hue
+    evaluator = RGBEvaluator.new
+    rgb = evaluator.strongest_hue("#108A2D")
+
+    assert_equal "Green", rgb
+  end
+
 
 end
