@@ -8,7 +8,14 @@ class AllergenEvaluatorTest < Minitest::Test
     evaluator = AllergenEvaluator.new
     allergens = evaluator.assess_allergy_score(2)
 
-    assert ["peanuts"], allergens
+    assert_equal ["peanuts"], allergens
+  end
+
+  def test_return_eggs_and_peanuts_for_score_of_3
+    evaluator = AllergenEvaluator.new
+    allergens = evaluator.assess_allergy_score(3)
+
+    assert_equal ["eggs", "peanuts"], allergens
   end
 
 end
