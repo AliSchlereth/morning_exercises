@@ -1,0 +1,10 @@
+1 eggs
+2 peanuts
+4 shellfish
+8 strawberries
+16 tomatoes
+32 chocolate
+62 pollen
+128 cats
+
+Given a number, find the combination of allergens 
