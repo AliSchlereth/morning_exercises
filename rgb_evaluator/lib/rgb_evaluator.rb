@@ -3,21 +3,16 @@ require "pry"
 class RGBEvaluator
 
   def convert(hex)
-    hex = check_for_pound_sign(hex)
-
-    # each_color = []
-    # hex[1..6].chars.each_slice(2) do |color_code|
-    #   each_color << color_code.join.hex
-    # end
+    hex = remove_pound_sign(hex)
     reds = hex[0..1]
     greens = hex[2..3]
     blues = hex[4..5]
-    colors = {"red" =>reds.hex,
+    colors = {"red" => reds.hex,
             "green" => greens.hex,
              "blue" => blues.hex}
   end
 
-  def check_for_pound_sign(hex)
+  def remove_pound_sign(hex)
     hex.delete("#")
   end
 
