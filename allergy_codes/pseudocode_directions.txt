@@ -1,0 +1,21 @@
+1 eggs
+2 peanuts
+4 shellfish
+8 strawberries
+16 tomatoes
+32 chocolate
+62 pollen
+128 cats
+
+Given a number, find the combination of allergens
+
+
+Thinking about using an array of score and then a
+hash to tell you what the allergen is for each score.
+Could iterate over the array then use the numbers found
+to access the allergens from the hash.
+
+Use some form of reduce where you iterate through each
+check 1 + 2
+check 1 + 4 etc
+when you find a combo that matches return numbers combined
