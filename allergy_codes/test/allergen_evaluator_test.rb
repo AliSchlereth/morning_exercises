@@ -34,7 +34,7 @@ class AllergenEvaluatorTest < Minitest::Test
   def test_calculate_combined_score_19
     evaluator = AllergenEvaluator.new
 
-    refute evaluator.allergen_codes.include?("8")
+    refute evaluator.allergen_codes.include?("16")
 
     evaluator.calculate_combined_score(19)
 
@@ -46,7 +46,7 @@ class AllergenEvaluatorTest < Minitest::Test
   def test_calculate_combined_score_39
     evaluator = AllergenEvaluator.new
 
-    refute evaluator.allergen_codes.include?("8")
+    refute evaluator.allergen_codes.include?("32")
 
     evaluator.calculate_combined_score(39)
 
@@ -56,8 +56,45 @@ class AllergenEvaluatorTest < Minitest::Test
     assert evaluator.allergen_codes.include?("1")
   end
 
-  def test_allergy_score
+  def test_allergy_score_returns_two_allergens
+    evaluator = AllergenEvaluator.new
+
+    allergens = evaluator.assess_allergy_score(9)
+    expected_allergens = ["eggs", "strawberries"]
+    all_here = allergens.all? do |allergen|
+      expected_allergens.include?(allergen)
+    end
+
+    assert all_here
+  end
+
+  def test_allergy_score_returns_three_allergens
+    evaluator = AllergenEvaluator.new
+
+    allergens = evaluator.assess_allergy_score(19)
+    expected_allergens = ["tomatoes", "eggs", "peanuts"]
+    all_here = allergens.all? do |allergen|
+      expected_allergens.include?(allergen)
+    end
+
+    assert all_here
+  end
+
+  def test_allergy_score_returns_four_allergens
+    evaluator = AllergenEvaluator.new
+
+    allergens = evaluator.assess_allergy_score(39)
+    expected_allergens = ["chocolate", "shellfish", "peanuts", "eggs"]
+    all_here = allergens.all? do |allergen|
+      expected_allergens.include?(allergen)
+    end
+
+    assert all_here
+  end
+
+  def test_
 
   end
+
 
 end
