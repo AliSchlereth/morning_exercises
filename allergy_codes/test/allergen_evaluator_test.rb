@@ -92,8 +92,33 @@ class AllergenEvaluatorTest < Minitest::Test
     assert all_here
   end
 
-  def test_
+  def test_double_check_math_prints_and_returns_string
+    evaluator = AllergenEvaluator.new
+    evaluator.calculate_combined_score(9)
+    assert_equal "You got it!", evaluator.double_check_math(9)
+  end
 
+  def test_double_check_math_returns_nil_for_incomplete_math
+    evaluator = AllergenEvaluator.new
+    evaluator.calculate_combined_score(11)
+
+    assert_nil   evaluator.double_check_math(9)
+  end
+
+  def test_add_allergens_by_code_converts_allergy_codes_to_allergens
+    evaluator = AllergenEvaluator.new
+    evaluator.calculate_combined_score(11)
+    expected_codes = ["8", "2", "1"]
+    all_here =  evaluator.allergen_codes.all? do |code|
+       expected_codes.include?(code)
+     end
+
+    assert all_here
+    assert evaluator.allergens.empty?
+
+    evaluator.add_allergens_by_code
+    
+    refute evaluator.allergens.empty?
   end
 
 
