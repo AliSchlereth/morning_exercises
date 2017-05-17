@@ -29,13 +29,16 @@ class AllergenEvaluator
 
   def calculate_combined_score(score)
     return if score <= 0
-    codes = ALLERGENS.keys
-    high_code = codes.reverse.find do |num|
-      num.to_i <= score
-    end
+    high_code = find_high_code(ALLERGENS.keys, score)
     @allergen_codes << high_code
     remainder = score - high_code.to_i
     calculate_combined_score(remainder)
+  end
+
+  def find_high_code(codes, score)
+    codes.reverse.find do |num|
+      num.to_i <= score
+    end
   end
 
   def double_check_math(score)
