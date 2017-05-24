@@ -6,7 +6,12 @@ require "pry"
 class LyricsAnalysisTest < Minitest::Test
 
   def test_it_reads_info_from_a_text_file
+    analysis = LyricsAnalysis.new
+    filename = "test_text.txt"
+    lyrics = analysis.read_file(filename)
 
+    assert_instance_of Array, lyrics
+    assert_equal "Here are some words", lyrics[0]
   end
 
   def test_it_returns_a_count
@@ -17,16 +22,27 @@ class LyricsAnalysisTest < Minitest::Test
     assert_instance_of Fixnum, count
   end
 
+  def test_it_returns_a_count_short
+    analysis = LyricsAnalysis.new
+    filename = "test_text.txt"
+    count = analysis.word_count(filename)
+
+    assert_instance_of Fixnum, count
+    assert_equal 8, count
+  end
+
   def test_read_file_returns_an_array_of_lines
     analysis = LyricsAnalysis.new
-    filename = "lyrics.txt"
+    filename = "test_text.txt"
+    lines = analysis.read_file(filename)
 
-    assert_instance_of Array, analysis.read_file(filename)
+    assert_instance_of Array, lines
+    assert_instance_of String, lines[0]
   end
 
   def test_collect_each_unique_word_creates_a_hash
     analysis = LyricsAnalysis.new
-    filename = "lyrics.txt"
+    filename = "test_text.txt"
     lines = analysis.read_file(filename)
 
     assert_instance_of Hash, analysis.collect_each_unique_word(lines)
