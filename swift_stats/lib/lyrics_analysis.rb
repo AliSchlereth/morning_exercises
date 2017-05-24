@@ -9,13 +9,13 @@ class LyricsAnalysis
   def read_file(filename)
     lyrics = []
     File.read(filename).each_line do |line|
-      lyrics << sanatize_line(line)
+      lyrics << sanatize_characters(line)
     end
     lyrics
   end
 
-  def sanatize_line(line)
-    line.chomp.gsub!(/\p{P}/, "")
+  def sanatize_characters(line)
+    line.chomp.gsub(/\p{P}/, "")
   end
 
   def collect_each_unique_word(lyric_lines)
