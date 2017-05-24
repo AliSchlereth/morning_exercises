@@ -63,4 +63,13 @@ class LyricsAnalysisTest < Minitest::Test
     assert_equal "This is a line a line", analysis.sanatize_characters(line)
   end
 
+  def test_analyze_each_word_filters_for_articles
+    analysis = LyricsAnalysis.new
+    line = "This is a line a line"
+    word_collection = {"this" => 1,
+                       "line" => 2}
+
+    assert_equal word_collection, analysis.analyze_each_word(line)
+  end
+
 end

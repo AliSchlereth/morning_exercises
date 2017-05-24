@@ -1,6 +1,6 @@
 class LyricsAnalysis
 
-  ARTICLES = ["a", "the", "in", "on", "an", "at"]
+  ARTICLES = ["a", "the", "in", "is", "on", "an", "at"]
 
 
   def word_count(filename)
@@ -32,7 +32,7 @@ class LyricsAnalysis
     #   word.downcase
     # end
     line.split(" ").reduce({}) do |result, word|
-      return result if ARTICLES.include?(word)
+      next result if ARTICLES.include?(word)
       if result[word.downcase]
         result[word.downcase] += 1
       else
