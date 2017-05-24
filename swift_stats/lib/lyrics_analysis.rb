@@ -17,7 +17,6 @@ class LyricsAnalysis
     thing = lyric_lines.reduce({}) do |result, line|
       result.merge(analyze_each_word(line))
     end
-    binding.pry
   end
 
   def analyze_each_word(line)

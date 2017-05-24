@@ -24,7 +24,6 @@ class LyricsAnalysisTest < Minitest::Test
   # end
 
   def test_collect_each_unique_word_creates_a_hash
-    skip
     analysis = LyricsAnalysis.new
     filename = "lyrics.txt"
     lines = analysis.read_file(filename)
