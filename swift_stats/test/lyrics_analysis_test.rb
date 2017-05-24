@@ -8,20 +8,20 @@ class LyricsAnalysisTest < Minitest::Test
 
   end
 
-  # def test_it_returns_a_count
-  #   analysis = LyricsAnalysis.new
-  #   filename = "lyrics.txt"
-  #   count = analysis.word_count(filename)
-  #
-  #   assert_instance_of Fixnum, count
-  # end
-  #
-  # def test_read_file_returns_an_array_of_lines
-  #   analysis = LyricsAnalysis.new
-  #   filename = "lyrics.txt"
-  #
-  #   assert_instance_of Array, analysis.read_file(filename)
-  # end
+  def test_it_returns_a_count
+    analysis = LyricsAnalysis.new
+    filename = "lyrics.txt"
+    count = analysis.word_count(filename)
+
+    assert_instance_of Fixnum, count
+  end
+
+  def test_read_file_returns_an_array_of_lines
+    analysis = LyricsAnalysis.new
+    filename = "lyrics.txt"
+
+    assert_instance_of Array, analysis.read_file(filename)
+  end
 
   def test_collect_each_unique_word_creates_a_hash
     analysis = LyricsAnalysis.new
